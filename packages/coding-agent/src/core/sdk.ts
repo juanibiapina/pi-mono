@@ -363,6 +363,7 @@ export async function createAgentSession(options: CreateAgentSessionOptions = {}
 		modelRegistry,
 		initialActiveToolNames,
 		extensionRunnerRef,
+		...(options.tools ? { baseToolsOverride: Object.fromEntries(options.tools.map((t) => [t.name, t])) } : {}),
 	});
 	const extensionsResult = resourceLoader.getExtensions();
 
